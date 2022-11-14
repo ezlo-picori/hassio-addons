@@ -1,5 +1,5 @@
 name: Backup S3
-version: 3.0.1
+version: 3.1.0
 slug: backup_s3
 codenotary: ezlo@protonmail.com
 description: Synchronize your Home-Assistant backups to S3 bucket

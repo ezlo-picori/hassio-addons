@@ -8,8 +8,6 @@ RUN apk add --no-cache \
     py3-pip && \
     pip3 install awscli awscli-plugin-endpoint
 
-# Copy data for add-on
-COPY run.sh /
-RUN chmod a+x /run.sh
-
-CMD [ "/run.sh" ]
+# Copy root filesystem
+COPY rootfs /
+WORKDIR /

@@ -13,7 +13,7 @@ aws configure set plugins.endpoint awscli_plugin_endpoint
 
 bashio::log.info "Starting backup synchronisation to S3 bucket ${BUCKET} on endpoint ${ENDPOINT}."
 
-if aws s3 sync /backup "s3://${BUCKET}/" --delete --endpoint-url "${ENDPOINT}"
+if aws s3 sync /backup "s3://${BUCKET}/" --no-progress --delete --endpoint-url "${ENDPOINT}"
 then
     bashio::log.info "Synchronization succeeded."
     exit 0

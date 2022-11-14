@@ -1,0 +1,21 @@
+{
+	"name": "Example Home Assistant add-on repository",
+	"image": "ghcr.io/home-assistant/devcontainer:addons",
+	"runArgs": ["-e", "GIT_EDITOR=code --wait", "--privileged"],
+	"containerEnv": {
+	  "WORKSPACE_DIRECTORY": "${containerWorkspaceFolder}"
+	},
+	"extensions": ["timonwong.shellcheck", "esbenp.prettier-vscode"],
+	"settings": {
+	  "terminal.integrated.profiles.linux": {
+		"zsh": {
+		  "path": "/usr/bin/zsh"
+		}
+	  },
+	  "terminal.integrated.defaultProfile.linux": "zsh",
+	  "editor.formatOnPaste": false,
+	  "editor.formatOnSave": true,
+	  "editor.formatOnType": true,
+	  "files.trimTrailingWhitespace": true
+	}
+  }

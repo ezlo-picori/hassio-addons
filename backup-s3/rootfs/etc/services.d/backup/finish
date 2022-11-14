@@ -1,0 +1,13 @@
+#!/usr/bin/env bashio
+
+declare APP_EXIT_CODE=${1}
+
+echo "${APP_EXIT_CODE}" > /run/s6-linux-init-container-results/exitcode
+
+if [[ "${APP_EXIT_CODE}" -eq 0 ]]
+then
+  bashio::log.info "Service ran successfully. Stopping the add-on."
+else
+  bashio::log.warning "Error raised by backup service (error code: ${APP_EXIT_CODE}). Stopping the add-on."
+fi
+exec /run/s6/basedir/bin/halt

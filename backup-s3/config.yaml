@@ -14,14 +14,14 @@ startup: once
 image: "ghcr.io/ezlo-picori/haos-addon-backup_s3-{arch}"
 init: false
 options:
-  awskey: ""
-  awssecret: ""
-  awsendpoint: ""
+  s3keyid: ""
+  s3secret: ""
+  s3endpoint: ""
   bucketname: ""
 schema:
-  awskey: str
-  awssecret: password
-  awsendpoint: str
+  s3keyid: str
+  s3secret: password
+  s3endpoint: str
   bucketname: str
 map:
   - backup:ro

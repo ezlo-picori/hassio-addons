@@ -1,13 +1,13 @@
 configuration:
   awskey:
-    name: "S3 Key"
+    s3keyid: "S3 Key"
     description: >-
       Access Key ID for your S3 storage backend.
-  awssecret:
+  s3secret:
     name: "S3 Secret"
     description: >-
       Secret Access Key for your S3 storage backend.
-  awsendpoint:
+  s3endpoint:
     name: "S3 Endpoint"
     description: >-
       Endpoint URL end the S3 backend.

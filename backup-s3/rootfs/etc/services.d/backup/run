@@ -3,9 +3,9 @@
 bashio::log.info "Setting AWS CLI options."
 
 BUCKET="$(bashio::config 'bucketname')"
-ENDPOINT="$(bashio::config 'ENDPOINT')"
-KEY="$(bashio::config 'awskey')"
-SECRET="$(bashio::config 'awssecret')"
+ENDPOINT="$(bashio::config 's3endpoint')"
+KEY="$(bashio::config 's3keyid')"
+SECRET="$(bashio::config 's3secret')"
 
 aws configure set aws_access_key_id "${KEY}"
 aws configure set aws_secret_access_key "${SECRET}"

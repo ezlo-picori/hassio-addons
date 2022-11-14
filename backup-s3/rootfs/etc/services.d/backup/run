@@ -1,0 +1,21 @@
+#!/usr/bin/with-contenv bashio
+
+bashio::log.info "Setting AWS CLI options."
+
+BUCKET="$(bashio::config 'bucketname')"
+ENDPOINT="$(bashio::config 'ENDPOINT')"
+KEY="$(bashio::config 'awskey')"
+SECRET="$(bashio::config 'awssecret')"
+
+aws configure set aws_access_key_id "${KEY}"
+aws configure set aws_secret_access_key "${SECRET}"
+aws configure set plugins.endpoint awscli_plugin_endpoint
+
+bashio::log.info "Starting backup synchronisation to S3 bucket ${BUCKET} on endpoint ${ENDPOINT}."
+
+if aws s3 sync /backup "s3://${BUCKET}/" --delete --endpoint-url "${ENDPOINT}"
+then
+    bashio::log.info "Synchronization succeeded."
+else
+    bashio::log.warning "Synchronization failed."
+fi

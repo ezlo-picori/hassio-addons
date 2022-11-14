@@ -1,0 +1,28 @@
+name: Backup S3
+version: 3.0.0
+slug: backup_s3
+codenotary: ezlo@protonmail.com
+description: Synchronize your Home-Assistant backups to S3 bucket
+url: "https://github.com/ezlo-picori/hassio-addons/tree/main/backup-s3"
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+startup: once
+image: "ghcr.io/ezlo-picori/haos-addon-backup_s3-{arch}"
+init: false
+boot: auto
+options:
+  awskey: ""
+  awssecret: ""
+  awsendpoint: ""
+  bucketname: ""
+schema:
+  awskey: str
+  awssecret: password
+  awsendpoint: str
+  bucketname: str
+map:
+  - backup:r

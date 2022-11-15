@@ -18,10 +18,6 @@ while ! psql -c '' 2> /dev/null; do
 done
 bashio::log.info "PostgreSQL database started."
 
-# Retrieve database main PID
-POSTGRES_PID=$(head -n 1 "${POSTGRES_DATA}/postmaster.pid")
-export POSTGRES_PID
-
 # Register stop
 function stop_postgres() {
     pg_ctl stop -D "${POSTGRES_DATA}"

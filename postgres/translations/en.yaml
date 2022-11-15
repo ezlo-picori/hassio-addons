@@ -1,0 +1,12 @@
+configuration:
+  databases:
+    name: Databases
+    description: Database names.
+  logins:
+    name: Logins
+    description: This section defines a create user definition in PostgreSQL.
+  rights:
+    name: Rights
+    description: This section grant privileges to users in PostgreSQL.
+network:
+  5432/tcp: The port to access the database engine.

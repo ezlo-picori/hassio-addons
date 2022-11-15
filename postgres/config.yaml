@@ -1,0 +1,42 @@
+name: PostgreSQL
+version: 0.4.0
+slug: postgres
+codenotary: ezlo@protonmail.com
+url: "https://github.com/ezlo-picori/hassio-addons/tree/main/postgres"
+description: PostgreSQL database
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+image: "ghcr.io/ezlo-picori/haos-addon-postgres-{arch}"
+init: false
+options:
+  databases:
+    - homeassistant
+  logins:
+    - password: null
+      username: homeassistant
+  rights:
+    - database: homeassistant
+      username: homeassistant
+ports:
+  5432/tcp: 5432
+ports_description:
+  5432/tcp: "The port to access the database engine."
+schema:
+  databases:
+    - str
+  logins:
+    - username: str
+      password: password
+  rights:
+    - database: str
+      privileges:
+        - "list(ALTER|CREATE|CREATE ROUTINE|CREATE TEMPORARY TABLES|\
+          CREATE VIEW|DELETE|DELETE HISTORY|DROP|EVENT|GRANT OPTION|INDEX|\
+          INSERT|LOCK TABLES|SELECT|SHOW VIEW|TRIGGER|UPDATE)?"
+      username: str
+startup: system
+timeout: 20

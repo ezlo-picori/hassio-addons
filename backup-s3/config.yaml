@@ -10,9 +10,9 @@ arch:
   - aarch64
   - amd64
   - i386
-startup: once
 image: "ghcr.io/ezlo-picori/haos-addon-backup_s3-{arch}"
 init: false
+startup: once
 options:
   s3keyid: ""
   s3secret: ""

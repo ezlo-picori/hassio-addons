@@ -39,7 +39,7 @@ You could automate this using Automation:
 - alias: Upload to S3
   trigger:
     platform: time
-    at: '3:30:00'
+    at: '4:00:00'
   condition:
     condition: time
     weekday:
@@ -47,7 +47,7 @@ You could automate this using Automation:
   action:
     service: hassio.addon_start
     data:
-      addon: local_backup_s3
+      addon: b2ddf90b_backup_s3
 ```
 
 The automation above first makes a snapshot at 3am, and then at 3.30am uploads to S3.

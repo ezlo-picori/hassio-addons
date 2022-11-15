@@ -11,4 +11,6 @@ RUN apk add --no-cache \
 # Copy root filesystem
 COPY rootfs /
 
+ENV POSTGRES_DATA=/data/databases
+
 WORKDIR /

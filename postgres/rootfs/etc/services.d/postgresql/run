@@ -2,19 +2,16 @@
 # ==============================================================================
 # Start PostgreSQL service
 # ==============================================================================
-export POSTGRES_DATA=/data/databases
-
-PRUN="exec s6-setuidgid postgres"
 
 if ! bashio::fs.directory_exists "${POSTGRES_DATA}"; then
-    bashio::log.info "Create database directory"
-    mkdir ${POSTGRES_DATA}
-    chown postgres:postgres ${POSTGRES_DATA}
+    bashio::log.info "Create database directory \"${POSTGRES_DATA}\""
+    mkdir "${POSTGRES_DATA}"
+    chown postgres:postgres "${POSTGRES_DATA}"
 
-    ${PRUN} /usr/libexec/postgres/initdb.sh
+    exec s6-setuidgid postgres /usr/libexec/postgres/initdb.sh
 else
     bashio::log.info "Using existing postgres initial system"
-    ${PRUN} /usr/libexec/postgres/checkdb.sh
+    exec s6-setuidgid postgres /usr/libexec/postgres/checkdb.sh
 fi
 
 # Execution follows following steps:

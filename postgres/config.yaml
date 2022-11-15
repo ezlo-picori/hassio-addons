@@ -1,5 +1,5 @@
 name: PostgreSQL
-version: 0.4.1
+version: 0.4.2
 slug: postgres
 codenotary: ezlo@protonmail.com
 url: "https://github.com/ezlo-picori/hassio-addons/tree/main/postgres"

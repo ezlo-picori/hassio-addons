@@ -50,6 +50,3 @@ for right in $(bashio::config "rights|keys"); do
         psql -c "GRANT ALL PRIVILEGES ON DATABASE ${DATABASE} TO ${USERNAME};" 2> /dev/null || true
     fi
 done
-
-# Pass execution to monitoring
-/usr/libexec/postgres/monitor.sh

@@ -10,7 +10,8 @@
 
 # Start the database
 bashio::log.info "Starting PostgreSQL..."
-pg_ctl start -D "${POSTGRES_DATA}"
+postgres -D "${POSTGRES_DATA}" &
+POSTGRES_PID=$!
 
 # Wait until DB is running
 while ! psql -c '' 2> /dev/null; do
@@ -20,11 +21,14 @@ bashio::log.info "PostgreSQL database started."
 
 # Register stop
 function stop_postgres() {
-    pg_ctl stop -D "${POSTGRES_DATA}"
+    pg_ctl stop -m smart -D "${POSTGRES_DATA}"
     # Successful exit, avoid wait exit status to propagate
     exit 0
 }
 trap "stop_postgres" SIGTERM SIGHUP
 
-# Delegate to configuration application
+# Apply database configuration
 /usr/libexec/postgres/config.sh
+
+# Wait for process to end
+wait "${POSTGRES_PID}"

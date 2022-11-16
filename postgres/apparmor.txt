@@ -1,12 +1,13 @@
-#include <tunables/global>
+include <tunables/global>
 
-profile postgres flags=(attach_disconnected,mediate_deleted,complain) {
+profile b2ddf90b_postgres flags=(attach_disconnected,mediate_deleted) {
   #include <abstractions/base>
 
   # Capabilities
   file,
   signal (send) set=(kill,term,int,hup,cont),
   capability chown,
+  capability kill,
 
   # S6-Overlay
   /init ix,
@@ -21,10 +22,30 @@ profile postgres flags=(attach_disconnected,mediate_deleted,complain) {
   /run/{,**} rwk,
   /dev/tty rw,
 
-  # PostgreSQL
-  #/{,var/}run/postgresql/** rw,
-
   # Access to options.json and other files within your addon
-  /data/** rw,
+  /data/options.json r,
 
+  /package/admin/s6-2.11.1.2/command/s6-applyuidgid cx -> s6setuidgid,
+  profile s6setuidgid flags=(attach_disconnected,mediate_deleted) {
+    #include <abstractions/base>
+    capability setuid,
+    capability setgid,
+
+    signal (receive) set=("cont","kill","term"),
+
+    /bin/{bash,busybox} ix,
+    /data/databases/{,**} lrw,
+    /dev/{null,tty} rw,
+    /dev/shm/PostgreSQL.* rw,
+    /etc/{hosts,passwd,resolv.conf,ssl/*} r,
+    /package/admin/** rmix,
+    /run/postgresql/* rw,
+    /run/s6/container_environment** r,
+    /tmp/.bashio/{,**} rw,
+    /usr/bin/{curl,jq} rix,
+    /usr/libexec/postgres{ql14,}/** rix,
+    /usr/lib/** rm,
+    /usr/lib/bashio/bashio ix,
+    /usr/share/{icu,postgresql14,zoneinfo}/** r,
+  }
 }

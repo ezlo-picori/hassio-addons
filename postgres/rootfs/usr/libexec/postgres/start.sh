@@ -5,9 +5,6 @@
 # 3 - Delegate execution to configuration application
 # =======================================================
 
-# Check permissions
-/usr/libexec/postgres/checkperm.sh
-
 # Start the database
 bashio::log.info "Starting PostgreSQL..."
 postgres -D "${POSTGRES_DATA}" &

@@ -13,9 +13,3 @@ else
     bashio::log.info "Using existing postgres initial system"
     exec s6-setuidgid postgres /usr/libexec/postgres/checkdb.sh
 fi
-
-# Execution follows following steps:
-#  initdb OR checkdb
-#  start
-#  config
-#  monitor

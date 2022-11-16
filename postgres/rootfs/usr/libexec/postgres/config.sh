@@ -6,9 +6,6 @@
 # 4 - Delegate execution to monitoring
 # =======================================================
 
-# Check permissions
-/usr/libexec/postgres/checkperm.sh
-
 # Init databases
 bashio::log.info "Ensure databases exists"
 for database in $(bashio::config "databases"); do

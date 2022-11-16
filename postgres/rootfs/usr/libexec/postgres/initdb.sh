@@ -4,9 +4,6 @@
 # 2 - Delegate execution to database start procedure
 # =======================================================
 
-# Check permissions
-/usr/libexec/postgres/checkperm.sh
-
 # Initialize database
 bashio::log.info "Create a new postgres initial system"
 initdb --data-checksums -D "${POSTGRES_DATA}" > /dev/null

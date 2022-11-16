@@ -7,7 +7,7 @@
 
 # Start the database
 bashio::log.info "Starting PostgreSQL..."
-postgres -D "${POSTGRES_DATA}" &
+postgres &
 POSTGRES_PID=$!
 
 # Wait until DB is running
@@ -18,7 +18,7 @@ bashio::log.info "PostgreSQL database started."
 
 # Register stop
 function stop_postgres() {
-    pg_ctl stop -m smart -D "${POSTGRES_DATA}"
+    pg_ctl stop -m smart
     # Successful exit, avoid wait exit status to propagate
     exit 0
 }

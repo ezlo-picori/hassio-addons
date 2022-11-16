@@ -3,10 +3,10 @@
 # Start PostgreSQL service
 # ==============================================================================
 
-if ! bashio::fs.directory_exists "${POSTGRES_DATA}"; then
-    bashio::log.info "Create database directory \"${POSTGRES_DATA}\""
-    mkdir "${POSTGRES_DATA}"
-    chown postgres:postgres "${POSTGRES_DATA}"
+if ! bashio::fs.directory_exists "${PGDATA}"; then
+    bashio::log.info "Create database directory \"${PGDATA}\""
+    mkdir "${PGDATA}"
+    chown postgres:postgres "${PGDATA}"
 
     exec s6-setuidgid postgres /usr/libexec/postgres/initdb.sh
 else

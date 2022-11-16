@@ -31,4 +31,5 @@ trap "stop_postgres" SIGTERM SIGHUP
 /usr/libexec/postgres/config.sh
 
 # Wait for process to end
+bashio::log.info "Waiting for PostgreSQL termination..."
 wait "${POSTGRES_PID}"

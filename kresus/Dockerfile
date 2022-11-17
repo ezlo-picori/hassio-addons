@@ -6,7 +6,7 @@ COPY rootfs /
 
 # Setup base
 RUN apk add --no-cache \
-        gcc g++ git gpgv pwgen python3 py3-babel py3-cssselect \
+        gcc g++ gpgv pwgen python3 py3-babel py3-cssselect \
         py3-dateutil py3-html2text py3-lxml py3-pillow py3-pip \
         py3-requests py3-six py3-unidecode py3-yaml py3-wheel \
         make nodejs npm && \

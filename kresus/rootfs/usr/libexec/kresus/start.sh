@@ -2,23 +2,21 @@
 WOOB_DIR="/woob"
 KRESUS_INI_FILE="/etc/kresus/config.ini"
 
+# Add some logging information
+
+bashio::log.info "start.sh: $(id)"
+bashio::log.info "$(env)"
+
 # ==============================================================================
 # Pull latest Woob version
 # ==============================================================================
 cd "${WOOB_DIR}" || bashio::exit.nok
 
-if ! bashio::fs.directory_exists "${WOOB_DIR}/.git"; then
-    bashio::log.info "Installing woob..."
-    git clone --depth 1 https://gitlab.com/woob/woob.git . || (bashio::log.error "Couldn't install woob" && bashio::exit.nok)
-    bashio::log.info "Done installing woob."
-else
-    bashio::log.info "Updating woob..."
-    if git pull; then
-      bashio::log.info "Done updating woob."
-    else
-      bashio::log.warning "Couldn't update; maybe the Woob's server is unreachable?"
-    fi
-fi
+bashio::log.info "Clear woob install"
+rm -rf {,.[!.],..?}*
+
+bashio::log.info "Add clean woob install"
+wget -qO- https://gitlab.com/woob/woob/-/archive/master/woob-master.tar.gz | tar xvz --strip-components=1
 
 bashio::log.info "Updating Woob dependencies..."
 pip3 uninstall -y -r <(pip3 freeze --user)

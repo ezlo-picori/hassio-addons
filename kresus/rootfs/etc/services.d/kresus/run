@@ -22,4 +22,4 @@ fi
 # ==============================================================================
 # Start service as unprivileged user
 # ==============================================================================
-exec s6-setuidgid postgres /usr/libexec/kresus/start.sh
+exec s6-setuidgid "${KRESUS_USER}" /usr/libexec/kresus/start.sh

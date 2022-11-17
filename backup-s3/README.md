@@ -1,4 +1,4 @@
-# Hassio Addon for Backing up to S3 Bucket
+# Home Assistant Add-on: S3 Backup
 
 Add-on for uploading hass.io snapshots to AWS S3.
 

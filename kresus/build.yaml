@@ -1,0 +1,13 @@
+build_from:
+  aarch64: "ghcr.io/home-assistant/aarch64-base:3.16"
+  amd64: "ghcr.io/home-assistant/amd64-base:3.16"
+  armhf: "ghcr.io/home-assistant/armhf-base:3.16"
+  armv7: "ghcr.io/home-assistant/armv7-base:3.16"
+labels:
+  org.opencontainers.image.title: "Home Assistant Add-on: Kresus"
+  org.opencontainers.image.description: "Kresus addon"
+  org.opencontainers.image.source: "https://github.com/ezlo-picori/hassio-addons"
+  org.opencontainers.image.licenses: "MIT License"
+codenotary:
+  signer: ezlo@protonmail.com
+  base_image: notary@home-assistant.io

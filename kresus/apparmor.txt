@@ -1,0 +1,61 @@
+#include <tunables/global>
+
+profile kresus flags=(attach_disconnected,mediate_deleted,complain) {
+  #include <abstractions/base>
+
+  # Capabilities
+  file,
+  signal (send) set=(kill,term,int,hup,cont),
+  capability chown,
+  capability fowner,
+
+  # S6-Overlay
+  /init ix,
+  /bin/** ix,
+  /usr/bin/** ix,
+  /run/{s6,s6-rc*,service}/** ix,
+  /package/** ix,
+  /command/** ix,
+  /etc/services.d/** rwix,
+  /etc/cont-init.d/** rwix,
+  /etc/cont-finish.d/** rwix,
+  /run/{,**} rwk,
+  /dev/tty rw,
+
+  # Access to options.json and other files within your addon
+  /data/** rw,
+
+  /sbin/su-exec cx,
+
+  profile /sbin/su-exec flags=(attach_disconnected,mediate_deleted) {
+    #include <abstractions/base>
+    capability setgid,
+    capability setuid,
+
+    /dev/null r,
+    /sbin/su-exec rm,
+
+    /etc/group r,
+    /etc/hosts r,
+    /etc/kresus/** r,
+    /etc/os-release r,
+    /etc/passwd r,
+    /etc/resolv.conf r,
+    /etc/ssl/** r,
+
+    /home/kresus/** rw,
+    /woob/ r,
+    /woob/** lrw,
+
+    /usr/bin/git ix,
+    /usr/bin/gpgv ix,
+    /usr/bin/node ix,
+    /usr/bin/python3.10 ix,
+    /usr/bin/pip3 rix,
+    /usr/libexec/git-core/** ix,
+    /usr/local/lib/node_modules/** rm,
+    /usr/local/lib/node_modules/kresus/bin/kresus.js rix,
+    /usr/share/** r,
+
+  }
+}

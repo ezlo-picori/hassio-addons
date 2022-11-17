@@ -12,7 +12,7 @@ RUN apk add --no-cache \
         make nodejs npm && \
     npm install --production -g kresus@0.18.1 && \
     addgroup kresus && \
-    adduser -G kresus -D -h /home/kresus kresus && \
+    adduser -G kresus -D -H kresus && \
     mkdir -p /woob && \
     chown kresus:kresus /woob && \
     chown -R kresus:kresus /etc/kresus && \

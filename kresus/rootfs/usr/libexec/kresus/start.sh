@@ -2,11 +2,6 @@
 WOOB_DIR="/woob"
 KRESUS_INI_FILE="/etc/kresus/config.ini"
 
-# Add some logging information
-
-bashio::log.info "start.sh: $(id)"
-bashio::log.info "$(env)"
-
 # ==============================================================================
 # Pull latest Woob version
 # ==============================================================================
@@ -16,11 +11,12 @@ bashio::log.info "Clear woob install"
 rm -rf {,.[!.],..?}*
 
 bashio::log.info "Add clean woob install"
-wget -qO- https://gitlab.com/woob/woob/-/archive/master/woob-master.tar.gz | tar xvz --strip-components=1
+wget -qO- https://gitlab.com/woob/woob/-/archive/master/woob-master.tar.gz | tar xz --strip-components=1
 
 bashio::log.info "Updating Woob dependencies..."
-pip3 uninstall -y -r <(pip3 freeze --user)
-pip3 install --no-cache-dir --user -r <(python3 ./setup.py requirements)
+pip3 install --no-cache-dir --prefix .py-deps -r <(python3 ./setup.py requirements)
+PYTHONPATH=$(python3 -c "import sys, os; print(os.sep.join(['$(pwd)', '.py-deps', 'lib', f'python{sys.version_info.major}.{sys.version_info.minor}', 'site-packages']))")
+export PYTHONPATH
 bashio::log.info "Done updating Woob dependencies."
 
 # ==============================================================================

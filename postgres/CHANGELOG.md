@@ -1,3 +1,7 @@
+## 0.5.1
+
+- Fix detection of existing users
+
 ## 0.5.0
 
 - Enforce apparmor

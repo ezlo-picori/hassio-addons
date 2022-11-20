@@ -23,7 +23,7 @@ for login in $(bashio::config "logins|keys"); do
     USERNAME=$(bashio::config "logins[${login}].username")
     PASSWORD=$(bashio::config "logins[${login}].password")
 
-    if ! psql -U "${USERNAME}" -c '' &> /dev/null; then
+    if ! psql -U "${USERNAME}" -d "postgres" -c '' &> /dev/null; then
         bashio::log.info "Create user ${USERNAME}"
         psql -c "CREATE USER ${USERNAME};"
     fi

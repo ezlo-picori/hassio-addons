@@ -27,7 +27,7 @@ profile kresus flags=(attach_disconnected,mediate_deleted) {
   /data/options.json r,
   /data/kresus/{,**} rw,
 
-  /package/admin/s6-2.11.1.2/command/s6-applyuidgid cx -> s6setuidgid,
+  /package/admin/s6-2.11.2.0/command/s6-applyuidgid cx -> s6setuidgid,
   profile s6setuidgid flags=(attach_disconnected,mediate_deleted) {
     #include <abstractions/base>
     capability setuid,
@@ -36,7 +36,7 @@ profile kresus flags=(attach_disconnected,mediate_deleted) {
     signal (receive) set=("cont","kill","term"),
 
     # Generic accesses
-    /package/admin/s6-2.11.1.2/command/s6-applyuidgid rm,
+    /package/admin/s6-2.11.2.0/command/s6-applyuidgid rm,
 
     /bin/{bash,busybox} ix,
     /dev/{null,tty} rw,

@@ -1,3 +1,11 @@
+## 0.4.2
+
+- Fix AppArmor profile
+
+## 0.4.1
+
+- Reinstall py3-lxml by default
+
 ## 0.4.0
 
 - Remove python dependencies from Dockerfile to prevent

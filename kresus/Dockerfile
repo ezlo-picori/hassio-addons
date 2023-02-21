@@ -7,7 +7,7 @@ COPY rootfs /
 # Setup base
 RUN apk add --no-cache \
         gcc g++ gpgv pwgen python3 py3-lxml py3-pip \
-        py3-wheel make nodejs npm && \
+        py3-wheel make nodejs npm zlib-dev && \
     npm install --production -g kresus@0.18.1 && \
     addgroup kresus && \
     adduser -G kresus -D -H kresus && \

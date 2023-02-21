@@ -6,7 +6,7 @@ COPY rootfs /
 
 # Setup base
 RUN apk add --no-cache \
-        gcc g++ gpgv pwgen python3 py3-pip \
+        gcc g++ gpgv pwgen python3 py3-lxml py3-pip \
         py3-wheel make nodejs npm && \
     npm install --production -g kresus@0.18.1 && \
     addgroup kresus && \

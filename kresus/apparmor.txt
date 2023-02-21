@@ -46,6 +46,8 @@ profile kresus flags=(attach_disconnected,mediate_deleted) {
     /tmp/.bashio/{,**} rw,
     /usr/bin/{curl,jq,ssl_client} rix,
     /usr/lib/bashio/bashio ix,
+    /lib/** rmix,
+    /tmp/pip-install-** rw,
 
     # Kresus specific accesses
     /data/kresus_salt r,
@@ -53,11 +55,13 @@ profile kresus flags=(attach_disconnected,mediate_deleted) {
     /etc/kresus/config.ini r,
     /woob/ r,
     /woob/** lrw,
+    /woob/.py-deps/** lrwix,
 
+    /usr/bin/{,**} r,
     /usr/bin/git ix,
     /usr/bin/gpgv ix,
     /usr/bin/node ix,
-    /usr/bin/python3.10 ix,
+    /usr/bin/python3.11 ix,
     /usr/bin/pip3 rix,
     /usr/libexec/git-core/** ix,
     /usr/libexec/kresus/** rix,

@@ -1,3 +1,7 @@
+## 0.5.0
+
+- Attempt using `alpine:edge` as base image
+
 ## 0.4.2
 
 - Fix AppArmor profile

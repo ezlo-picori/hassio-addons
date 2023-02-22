@@ -1,3 +1,7 @@
+## 0.6.0
+
+- Bump Kresus to 0.19.0
+
 ## 0.5.1
 
 - Fix AppArmor profile

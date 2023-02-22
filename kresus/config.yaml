@@ -1,5 +1,5 @@
 name: Kresus
-version: "0.6.0"
+version: "0.6.1"
 slug: kresus
 codenotary: ezlo@protonmail.com
 url: "https://github.com/ezlo-picori/hassio-addons/tree/main/kresus"
@@ -9,7 +9,6 @@ arch:
   - armv7
   - aarch64
   - amd64
-  - i386
 image: "ghcr.io/ezlo-picori/haos-addon-kresus-{arch}"
 init: false
 options:

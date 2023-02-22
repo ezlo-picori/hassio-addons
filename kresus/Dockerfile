@@ -92,7 +92,7 @@ COPY rootfs /
 RUN apk add --no-cache \
         gcc g++ gpgv jpeg-dev pwgen python3-dev py3-lxml py3-pip \
         py3-wheel make nodejs npm zlib-dev && \
-    npm install --production -g kresus@0.19.0 && \
+    npm install --omit=dev -g kresus@0.19.0 && \
     addgroup kresus && \
     adduser -G kresus -D -H kresus && \
     mkdir -p /woob && \

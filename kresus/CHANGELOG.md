@@ -1,3 +1,7 @@
+## 0.6.1
+
+- Remove support for i386 architecture
+
 ## 0.6.0
 
 - Bump Kresus to 0.19.0

@@ -14,7 +14,7 @@ bashio::log.info "Add clean woob install"
 wget -qO- https://gitlab.com/woob/woob/-/archive/master/woob-master.tar.gz | tar xz --strip-components=1
 
 bashio::log.info "Updating Woob dependencies..."
-pip3 install --no-cache-dir --prefix .py-deps -r <(python3 ./setup.py requirements)
+pip3 install --no-cache-dir --prefix .py-deps .
 PYTHONPATH=$(python3 -c "import sys, os; print(os.sep.join(['$(pwd)', '.py-deps', 'lib', f'python{sys.version_info.major}.{sys.version_info.minor}', 'site-packages']))")
 export PYTHONPATH
 bashio::log.info "Done updating Woob dependencies."

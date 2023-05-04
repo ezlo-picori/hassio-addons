@@ -1,3 +1,7 @@
+## 0.6.2
+
+- Update woob dependencies install method
+
 ## 0.6.1
 
 - Remove support for i386 architecture
